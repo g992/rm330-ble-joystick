@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace = 'dev.g992.rcviewer'
+    compileSdk = 35
+
+    defaultConfig {
+        applicationId = 'dev.g992.rcviewer'
+        minSdk = 26
+        // Device runs Android 10 (API 29); local sideload only.
+        targetSdk = 29
+        versionCode = 1
+        versionName = "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled = false
+            signingConfig = signingConfigs.debug
+        }
+    }
+
+    lint {
+        disable += ['ExpiredTargetSdkVersion']
+    }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+}
